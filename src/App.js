@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -40,7 +40,11 @@ function App() {
       <Navbar title="textUtils" about="About" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container my-3">
-        <TextForm heading="Enter the text to analysis" mode={mode} showAlert={showAlert} />
+        <Routes>
+          <Route path="/" element={<TextForm heading="Enter the text to analysis" mode={mode} showAlert={showAlert} />}/>
+          <Route path="/about" element = {<About/>}/>
+        </Routes>
+
       </div>
     </>
   );
